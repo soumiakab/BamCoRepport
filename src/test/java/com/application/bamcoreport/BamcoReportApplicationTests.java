@@ -15,11 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 class BamcoReportApplicationTests {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Test
-    void contextLoads() {
-    }
+ 
 
 }
