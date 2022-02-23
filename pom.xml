@@ -131,6 +131,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>bamcorepport_dockerimage</finalName>
     </build>
 
 </project>
