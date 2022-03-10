@@ -147,7 +147,7 @@
             </plugin>
         </plugins>
 
-        <finalName>breif9</finalName>
+        <finalName>bamcorepport_dockerimage</finalName>
     </build>
 
 </project>
