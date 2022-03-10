@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: db
+      POSTGRES_DB: bamDb
   ### Postgres Adminer ###
   postgres_admin:
     image: dpage/pgadmin4
@@ -23,12 +23,16 @@ services:
   api:
     container_name: bamcorepport_dockerimage
     image: bamcorepport_dockerimage
-    build:  ./
+    build:
+      context: ./
+      dockerfile: Dockerfile
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgresql://postgres:5432/db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bamDb
       DATABASE_USER: user
       DATABASE_PASSWORD: password
     ports:
       - "8080:3100"
+
+#DATABASE_URL: postgresql://postgres:5432/db
