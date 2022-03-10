@@ -6,8 +6,8 @@ services:
     ports:
       - "35000:5432"
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: soumia
       POSTGRES_DB: bamDb
   ### Postgres Adminer ###
   postgres_admin:
