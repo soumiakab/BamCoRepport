@@ -53,6 +53,7 @@ jobs:
 
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
+        run: docker-compose up -d
         with:
           image: soumia12345/bamcorepport_dockerimage
           tags: latest
