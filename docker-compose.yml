@@ -22,7 +22,7 @@ services:
   ### API Spring Boot ###
   api:
     container_name: bamcorepport_dockerimage
-    image: breif9
+    image: bamcorepport_dockerimage
     build:  ./
     depends_on:
       - postgres
