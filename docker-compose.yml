@@ -30,8 +30,8 @@ services:
       - postgres
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bamDb
-      DATABASE_USER: user
-      DATABASE_PASSWORD: password
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: soumia
     ports:
       - "8080:3100"
 
