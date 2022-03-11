@@ -9,6 +9,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: soumia
       POSTGRES_DB: bamDb
+    networks:
+      - mynet
   ### Postgres Adminer ###
   postgres_admin:
     image: dpage/pgadmin4
@@ -34,5 +36,10 @@ services:
       DATABASE_PASSWORD: soumia
     ports:
       - "8080:3100"
+    networks:
+      - mynet
+networks:
+    mynet:
+      driver: bridge
 
 #DATABASE_URL: postgresql://postgres:5432/db
