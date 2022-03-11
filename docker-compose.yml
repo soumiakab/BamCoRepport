@@ -19,7 +19,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: password
     ports:
       - "5050:80"
-      -
   ### API Spring Boot ###
   api:
     container_name: bamcorepport_dockerimage
