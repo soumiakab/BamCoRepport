@@ -2,6 +2,7 @@ version: "3.8"
 services:
   ### Postgres Database ###
   postgres:
+    container_name: postgres_db
     image: postgres
     ports:
       - "35000:5432"
@@ -30,6 +31,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - postgres
+    links:
+      - "postgres:postgres_db"
     environment:
       DATABASE_URL: jdbc:postgresql://postgres:5432/bamDb
       DATABASE_USER: postgres
