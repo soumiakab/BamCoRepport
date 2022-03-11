@@ -4,8 +4,10 @@ services:
   postgres:
     container_name: postgres_db
     image: postgres
+    volumes:
+      - sample_db:/var/lib/postgresql/data
     ports:
-      - "35000:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: soumia
@@ -29,6 +31,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    expose:
+      - "8080"
     depends_on:
       - postgres
     links:
@@ -37,10 +41,10 @@ services:
       DATABASE_URL: jdbc:postgresql://postgres:5432/bamDb
       DATABASE_USER: postgres
       DATABASE_PASSWORD: soumia
-    ports:
-      - "8080:3100"
     networks:
       - mynet
+volumes:
+  sample_db: {}
 networks:
     mynet:
       driver: bridge
