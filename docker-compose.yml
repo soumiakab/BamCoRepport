@@ -1,52 +1,24 @@
-version: "3.8"
+version: "3.7"
+
 services:
-  ### Postgres Database ###
-  postgres:
-    container_name: postgres_db
+  web:
+    image: bamcorepport
+    container_name: web
+    build: ./
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/bamdb
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+  db:
+    container_name: db
     image: postgres
+    environment:
+      POSTGRES_PASSWORD: soumia
+      POSTGRES_USER: postgres
+      POSTGRES_DB: bamdb
     volumes:
-      - sample_db:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: soumia
-      POSTGRES_DB: bamDb
-    networks:
-      - mynet
-  ### Postgres Adminer ###
-  postgres_admin:
-    image: dpage/pgadmin4
-    depends_on:
-      - postgres
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.de
-      PGADMIN_DEFAULT_PASSWORD: password
-    ports:
-      - "5050:80"
-  ### API Spring Boot ###
-  api:
-    container_name: bamcorepport_dockerimage
-    image: bamcorepport_dockerimage
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    expose:
-      - "8080"
-    depends_on:
-      - postgres
-    links:
-      - "postgres:postgres_db"
-    environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/bamDb
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: soumia
-    networks:
-      - mynet
-volumes:
-  sample_db: {}
-networks:
-    mynet:
-      driver: bridge
-
-#DATABASE_URL: postgresql://postgres:5432/db
